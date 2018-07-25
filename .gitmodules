@@ -1,0 +1,3 @@
+[submodule "dependencies/pybind11-adapter"]
+	path = dependencies/pybind11-adapter
+	url = https://github.com/njoy/pybind11-adapter.git
