@@ -556,6 +556,7 @@
       }
     }
   },
+  "driver": "src/main.cpp",
   "file extension": {
     "header files": [
       "h++",
@@ -573,10 +574,13 @@
     ]
   },
   "header files": [
-    "src/pyENDFtk.hpp"
+    "src/pyENDFtk.hpp",
+    "src/pyENDFtk/test.hpp"
   ],
   "ignore pattern": "$^",
-  "implementation files": [],
+  "implementation files": [
+    "src/main.cpp"
+  ],
   "include path": "src/",
   "initialized": true,
   "is external project": false,
