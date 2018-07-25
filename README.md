@@ -1,5 +1,5 @@
 # pyENDFtk
-This repository provides Python bindings to [ENDFtk]{https://github.com/njoy/ENDFtk). It uses [pybind11](https://github.com/pybind/pybind11) to provide the bindings. 
+This repository provides Python bindings to [ENDFtk](https://github.com/njoy/ENDFtk). It uses [pybind11](https://github.com/pybind/pybind11) to provide the bindings. 
 
 
 ## LICENSE
