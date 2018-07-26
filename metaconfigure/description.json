@@ -579,7 +579,7 @@
   ],
   "ignore pattern": "$^",
   "implementation files": [
-    "src/main.cpp"
+    "src/ENDFtk.cpp"
   ],
   "include path": "src/",
   "initialized": true,

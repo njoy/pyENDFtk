@@ -1,5 +1,5 @@
 
-cmake_minimum_required( VERSION 3.2 ) 
+cmake_minimum_required( VERSION 3.2 )
 set( CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Supported configuration types" FORCE )
         
 if ( NOT GIT_EXECUTABLE )
@@ -19,7 +19,7 @@ if( NOT ROOT_DIRECTORY )
             endif()
         endif()
         execute_process( COMMAND ${PYTHON_EXECUTABLE} "./metaconfigure/fetch_subprojects.py"
-                         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} 
+                         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
                          RESULT_VARIABLE fetch_failure )
         if ( NOT fetch_failure )
             set( fetched_subprojects TRUE CACHE BOOL "fetch script ran" )
@@ -86,6 +86,18 @@ set( pyENDFtk_AppleClang_Darwin_link_time_optimization_flags "-flto" )
 set( pyENDFtk_AppleClang_Darwin_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
 set( pyENDFtk_AppleClang_Darwin_nonportable_optimization_flags "-march=native" )
 set( pyENDFtk_AppleClang_Darwin_static_flags "-static" )
+set( pyENDFtk_GNU_CYGWIN_common_flags "-Wno-subobject-linkage" "-Wall" "-Wextra" "-Wpedantic" "-std=gnu++14" )
+set( pyENDFtk_GNU_CYGWIN_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
+set( pyENDFtk_GNU_CYGWIN_RELEASE_flags "-O3" "-DNDEBUG" )
+set( pyENDFtk_GNU_CYGWIN_strict_flags "-Werror" )
+set( pyENDFtk_GNU_CYGWIN_coverage_flags "--coverage" )
+set( pyENDFtk_GNU_CYGWIN_subproject_flags  )
+set( pyENDFtk_GNU_CYGWIN_base_project_flags  )
+set( pyENDFtk_GNU_CYGWIN_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
+set( pyENDFtk_GNU_CYGWIN_link_time_optimization_flags "-flto" )
+set( pyENDFtk_GNU_CYGWIN_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
+set( pyENDFtk_GNU_CYGWIN_nonportable_optimization_flags "-march=native" )
+set( pyENDFtk_GNU_CYGWIN_static_flags "-static" )
 set( pyENDFtk_GNU_MinGW_common_flags "-Wno-subobject-linkage" "-Wall" "-Wextra" "-Wpedantic" "-std=c++14" )
 set( pyENDFtk_GNU_MinGW_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
 set( pyENDFtk_GNU_MinGW_RELEASE_flags "-O3" "-DNDEBUG" )
@@ -98,6 +110,18 @@ set( pyENDFtk_GNU_MinGW_link_time_optimization_flags "-flto" )
 set( pyENDFtk_GNU_MinGW_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
 set( pyENDFtk_GNU_MinGW_nonportable_optimization_flags "-march=native" )
 set( pyENDFtk_GNU_MinGW_static_flags "-static" )
+set( pyENDFtk_GNU_Linux_common_flags "-Wno-subobject-linkage" "-Wall" "-Wextra" "-Wpedantic" "-std=c++14" )
+set( pyENDFtk_GNU_Linux_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
+set( pyENDFtk_GNU_Linux_RELEASE_flags "-O3" "-DNDEBUG" )
+set( pyENDFtk_GNU_Linux_strict_flags "-Werror" )
+set( pyENDFtk_GNU_Linux_coverage_flags "--coverage" )
+set( pyENDFtk_GNU_Linux_subproject_flags  )
+set( pyENDFtk_GNU_Linux_base_project_flags  )
+set( pyENDFtk_GNU_Linux_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
+set( pyENDFtk_GNU_Linux_link_time_optimization_flags "-flto" )
+set( pyENDFtk_GNU_Linux_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
+set( pyENDFtk_GNU_Linux_nonportable_optimization_flags "-march=native" )
+set( pyENDFtk_GNU_Linux_static_flags "-static" )
 set( pyENDFtk_GNU_Windows_common_flags "-Wno-subobject-linkage" "-Wall" "-Wextra" "-Wpedantic" "-std=c++14" )
 set( pyENDFtk_GNU_Windows_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
 set( pyENDFtk_GNU_Windows_RELEASE_flags "-O3" "-DNDEBUG" )
@@ -122,30 +146,18 @@ set( pyENDFtk_GNU_Darwin_link_time_optimization_flags "-flto" )
 set( pyENDFtk_GNU_Darwin_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
 set( pyENDFtk_GNU_Darwin_nonportable_optimization_flags "-march=native" )
 set( pyENDFtk_GNU_Darwin_static_flags "-static" )
-set( pyENDFtk_GNU_CYGWIN_common_flags "-Wno-subobject-linkage" "-Wall" "-Wextra" "-Wpedantic" "-std=gnu++14" )
-set( pyENDFtk_GNU_CYGWIN_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
-set( pyENDFtk_GNU_CYGWIN_RELEASE_flags "-O3" "-DNDEBUG" )
-set( pyENDFtk_GNU_CYGWIN_strict_flags "-Werror" )
-set( pyENDFtk_GNU_CYGWIN_coverage_flags "--coverage" )
-set( pyENDFtk_GNU_CYGWIN_subproject_flags  )
-set( pyENDFtk_GNU_CYGWIN_base_project_flags  )
-set( pyENDFtk_GNU_CYGWIN_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
-set( pyENDFtk_GNU_CYGWIN_link_time_optimization_flags "-flto" )
-set( pyENDFtk_GNU_CYGWIN_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
-set( pyENDFtk_GNU_CYGWIN_nonportable_optimization_flags "-march=native" )
-set( pyENDFtk_GNU_CYGWIN_static_flags "-static" )
-set( pyENDFtk_GNU_Linux_common_flags "-Wno-subobject-linkage" "-Wall" "-Wextra" "-Wpedantic" "-std=c++14" )
-set( pyENDFtk_GNU_Linux_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
-set( pyENDFtk_GNU_Linux_RELEASE_flags "-O3" "-DNDEBUG" )
-set( pyENDFtk_GNU_Linux_strict_flags "-Werror" )
-set( pyENDFtk_GNU_Linux_coverage_flags "--coverage" )
-set( pyENDFtk_GNU_Linux_subproject_flags  )
-set( pyENDFtk_GNU_Linux_base_project_flags  )
-set( pyENDFtk_GNU_Linux_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
-set( pyENDFtk_GNU_Linux_link_time_optimization_flags "-flto" )
-set( pyENDFtk_GNU_Linux_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
-set( pyENDFtk_GNU_Linux_nonportable_optimization_flags "-march=native" )
-set( pyENDFtk_GNU_Linux_static_flags "-static" )
+set( pyENDFtk_Clang_CYGWIN_common_flags "-Wno-subobject-linkage" "-Wall" "-Wextra" "-Wpedantic" "-std=gnu++14" )
+set( pyENDFtk_Clang_CYGWIN_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
+set( pyENDFtk_Clang_CYGWIN_RELEASE_flags "-O3" "-DNDEBUG" )
+set( pyENDFtk_Clang_CYGWIN_strict_flags "-Werror" )
+set( pyENDFtk_Clang_CYGWIN_coverage_flags "--coverage" )
+set( pyENDFtk_Clang_CYGWIN_subproject_flags  )
+set( pyENDFtk_Clang_CYGWIN_base_project_flags  )
+set( pyENDFtk_Clang_CYGWIN_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
+set( pyENDFtk_Clang_CYGWIN_link_time_optimization_flags "-flto" )
+set( pyENDFtk_Clang_CYGWIN_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
+set( pyENDFtk_Clang_CYGWIN_nonportable_optimization_flags "-march=native" )
+set( pyENDFtk_Clang_CYGWIN_static_flags "-static" )
 set( pyENDFtk_Clang_MinGW_common_flags "-Wno-subobject-linkage" "-Wall" "-Wextra" "-Wpedantic" "-std=c++14" )
 set( pyENDFtk_Clang_MinGW_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
 set( pyENDFtk_Clang_MinGW_RELEASE_flags "-O3" "-DNDEBUG" )
@@ -158,6 +170,18 @@ set( pyENDFtk_Clang_MinGW_link_time_optimization_flags "-flto" )
 set( pyENDFtk_Clang_MinGW_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
 set( pyENDFtk_Clang_MinGW_nonportable_optimization_flags "-march=native" )
 set( pyENDFtk_Clang_MinGW_static_flags "-static" )
+set( pyENDFtk_Clang_Linux_common_flags "-stdlib=libstdc++" "-Wall" "-Wextra" "-Wpedantic" "-std=c++14" )
+set( pyENDFtk_Clang_Linux_DEBUG_flags "-O0" "-g" "-gdwarf-3" )
+set( pyENDFtk_Clang_Linux_RELEASE_flags "-O3" "-DNDEBUG" )
+set( pyENDFtk_Clang_Linux_strict_flags "-Werror" )
+set( pyENDFtk_Clang_Linux_coverage_flags "--coverage" )
+set( pyENDFtk_Clang_Linux_subproject_flags  )
+set( pyENDFtk_Clang_Linux_base_project_flags  )
+set( pyENDFtk_Clang_Linux_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
+set( pyENDFtk_Clang_Linux_link_time_optimization_flags "-flto" )
+set( pyENDFtk_Clang_Linux_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
+set( pyENDFtk_Clang_Linux_nonportable_optimization_flags "-march=native" )
+set( pyENDFtk_Clang_Linux_static_flags "-static" )
 set( pyENDFtk_Clang_Windows_common_flags "-stdlib=libc++" "-Wall" "-Wextra" "-Wpedantic" "-std=c++14" )
 set( pyENDFtk_Clang_Windows_DEBUG_flags "-O0" "-g" "-gdwarf-3" )
 set( pyENDFtk_Clang_Windows_RELEASE_flags "-O3" "-DNDEBUG" )
@@ -182,36 +206,12 @@ set( pyENDFtk_Clang_Darwin_link_time_optimization_flags "-flto" )
 set( pyENDFtk_Clang_Darwin_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
 set( pyENDFtk_Clang_Darwin_nonportable_optimization_flags "-march=native" )
 set( pyENDFtk_Clang_Darwin_static_flags "-static" )
-set( pyENDFtk_Clang_CYGWIN_common_flags "-Wno-subobject-linkage" "-Wall" "-Wextra" "-Wpedantic" "-std=gnu++14" )
-set( pyENDFtk_Clang_CYGWIN_DEBUG_flags "-O0" "-g" "-gdwarf-3" "-fsignaling-nans" )
-set( pyENDFtk_Clang_CYGWIN_RELEASE_flags "-O3" "-DNDEBUG" )
-set( pyENDFtk_Clang_CYGWIN_strict_flags "-Werror" )
-set( pyENDFtk_Clang_CYGWIN_coverage_flags "--coverage" )
-set( pyENDFtk_Clang_CYGWIN_subproject_flags  )
-set( pyENDFtk_Clang_CYGWIN_base_project_flags  )
-set( pyENDFtk_Clang_CYGWIN_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
-set( pyENDFtk_Clang_CYGWIN_link_time_optimization_flags "-flto" )
-set( pyENDFtk_Clang_CYGWIN_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
-set( pyENDFtk_Clang_CYGWIN_nonportable_optimization_flags "-march=native" )
-set( pyENDFtk_Clang_CYGWIN_static_flags "-static" )
-set( pyENDFtk_Clang_Linux_common_flags "-stdlib=libstdc++" "-Wall" "-Wextra" "-Wpedantic" "-std=c++14" )
-set( pyENDFtk_Clang_Linux_DEBUG_flags "-O0" "-g" "-gdwarf-3" )
-set( pyENDFtk_Clang_Linux_RELEASE_flags "-O3" "-DNDEBUG" )
-set( pyENDFtk_Clang_Linux_strict_flags "-Werror" )
-set( pyENDFtk_Clang_Linux_coverage_flags "--coverage" )
-set( pyENDFtk_Clang_Linux_subproject_flags  )
-set( pyENDFtk_Clang_Linux_base_project_flags  )
-set( pyENDFtk_Clang_Linux_profile_generate_flags "-fprofile-generate='${CMAKE_BINARY_DIR}/profiling'" )
-set( pyENDFtk_Clang_Linux_link_time_optimization_flags "-flto" )
-set( pyENDFtk_Clang_Linux_profile_use_flags "-fprofile-use='${CMAKE_BINARY_DIR}/profiling'" )
-set( pyENDFtk_Clang_Linux_nonportable_optimization_flags "-march=native" )
-set( pyENDFtk_Clang_Linux_static_flags "-static" )
 
 if ( static_pyENDFtk )
     set( pyENDFtk_library_linkage STATIC )
 else ()
     set( pyENDFtk_library_linkage SHARED )
-endif () 
+endif ()
 
 set( CMAKE_SKIP_BUILD_RPATH FALSE )
 set( CMAKE_BUILD_WITH_INSTALL_RPATH FALSE )
@@ -302,14 +302,12 @@ message( STATUS "Git commit hash: ${GIT_HASH}" )
 message( STATUS "" )
 message( STATUS "-----------------------------------------------------------" )
 
-# add_library( pyENDFtk ${pyENDFtk_library_linkage} 
-#              "${CMAKE_CURRENT_SOURCE_DIR}/src/pyENDFtk.hpp"
-#              "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp" )
+add_library( pyENDFtk ${pyENDFtk_library_linkage}
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/pyENDFtk.hpp"
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/pyENDFtk/test.hpp"
+             "${CMAKE_CURRENT_SOURCE_DIR}/src/ENDFtk.cpp" )
 
-# target_include_directories( pyENDFtk PUBLIC src/ )
-
-pybind11_add_module(pyENDFtk 
-  "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
+target_include_directories( pyENDFtk PUBLIC src/ )
 
 set( PREFIX pyENDFtk_${CMAKE_CXX_COMPILER_ID}_${CMAKE_SYSTEM_NAME} )
 
@@ -334,51 +332,50 @@ target_link_libraries( pyENDFtk PUBLIC "$<$<AND:$<CONFIG:RELEASE>,$<BOOL:${link_
 
 target_link_libraries( pyENDFtk PUBLIC ENDFtk PUBLIC pybind11-adapter )
 
-
-# if ( NOT is_subproject )
-#     add_executable( pyENDFtk_executable src/main.cpp )
-#     set_target_properties( pyENDFtk_executable PROPERTIES OUTPUT_NAME pyENDFtk )
-#     target_compile_options( pyENDFtk_executable PRIVATE 
-#     ${${PREFIX}_common_flags}
-#     $<$<BOOL:${pyENDFtk_strict}>:${${PREFIX}_strict_flags}>
-#     $<$<BOOL:${static}>:${${PREFIX}_static_flags}>
-#     $<$<BOOL:${is_subproject}>:${${PREFIX}_subproject_flags}>
-#     $<$<NOT:$<BOOL:${is_subproject}>>:${${PREFIX}_base_project_flags}>
-#     $<$<CONFIG:DEBUG>:
-#     ${${PREFIX}_DEBUG_flags} 
-#     $<$<BOOL:${coverage}>:${${PREFIX}_coverage_flags}>>
-#     $<$<CONFIG:RELEASE>:
-#     ${${PREFIX}_RELEASE_flags} 
-#     $<$<BOOL:${profile_generate}>:${${PREFIX}_profile_generate_flags}> 
-#     $<$<BOOL:${profile_use}>:${${PREFIX}_profile_use_flags}> 
-#     $<$<BOOL:${link_time_optimization}>:${${PREFIX}_link_time_optimization_flags}> 
-#     $<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags}>>
-#     ${CXX_appended_flags} ${pyENDFtk_appended_flags} )
-#     target_link_libraries( pyENDFtk_executable PUBLIC pyENDFtk )
-# endif()
+if ( NOT is_subproject )
+    add_executable( pyENDFtk_executable src/main.cpp )
+    set_target_properties( pyENDFtk_executable PROPERTIES OUTPUT_NAME pyENDFtk )
+    target_compile_options( pyENDFtk_executable PRIVATE 
+    ${${PREFIX}_common_flags}
+    $<$<BOOL:${pyENDFtk_strict}>:${${PREFIX}_strict_flags}>
+    $<$<BOOL:${static}>:${${PREFIX}_static_flags}>
+    $<$<BOOL:${is_subproject}>:${${PREFIX}_subproject_flags}>
+    $<$<NOT:$<BOOL:${is_subproject}>>:${${PREFIX}_base_project_flags}>
+    $<$<CONFIG:DEBUG>:
+    ${${PREFIX}_DEBUG_flags} 
+    $<$<BOOL:${coverage}>:${${PREFIX}_coverage_flags}>>
+    $<$<CONFIG:RELEASE>:
+    ${${PREFIX}_RELEASE_flags} 
+    $<$<BOOL:${profile_generate}>:${${PREFIX}_profile_generate_flags}> 
+    $<$<BOOL:${profile_use}>:${${PREFIX}_profile_use_flags}> 
+    $<$<BOOL:${link_time_optimization}>:${${PREFIX}_link_time_optimization_flags}> 
+    $<$<BOOL:${nonportable_optimization}>:${${PREFIX}_nonportable_optimization_flags}>>
+    ${CXX_appended_flags} ${pyENDFtk_appended_flags} )
+    target_link_libraries( pyENDFtk_executable PUBLIC pyENDFtk )
+endif()
 
 
 set( installation_targets pyENDFtk )
-# if ( NOT is_subproject )
-#     list( APPEND installation_targets pyENDFtk_executable )
-# endif()
+if ( NOT is_subproject )
+    list( APPEND installation_targets pyENDFtk_executable )
+endif()
 
-install( TARGETS ${installation_targets} 
+install( TARGETS ${installation_targets}
          RUNTIME DESTINATION bin
          LIBRARY DESTINATION lib
          ARCHIVE DESTINATION lib
-         PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ 
-                     GROUP_EXECUTE GROUP_READ 
+         PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
+                     GROUP_EXECUTE GROUP_READ
                      WORLD_EXECUTE WORLD_READ )
 
 install( DIRECTORY src// DESTINATION include
-         FILE_PERMISSIONS OWNER_READ OWNER_WRITE 
-                          GROUP_READ 
+         FILE_PERMISSIONS OWNER_READ OWNER_WRITE
+                          GROUP_READ
                           WORLD_READ
-         DIRECTORY_PERMISSIONS OWNER_READ OWNER_WRITE 
-                               GROUP_READ 
+         DIRECTORY_PERMISSIONS OWNER_READ OWNER_WRITE
+                               GROUP_READ
                                WORLD_READ
          FILES_MATCHING REGEX ".*\.h[+][+]$|.*\.hxx$|.*\.hpp$|.*\.hh$|.*\.h$"  )
 
                     INCLUDE(CPack)
-
+                    
