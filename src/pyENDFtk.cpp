@@ -1,6 +1,9 @@
 
 #include <pybind11/pybind11.h>
 
+#undef TAB1
+#undef TAB2
+
 #include "ENDFtk.hpp"
 
 namespace py = pybind11;
