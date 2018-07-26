@@ -575,11 +575,11 @@
   },
   "header files": [
     "src/pyENDFtk.hpp",
-    "src/pyENDFtk/test.hpp"
+    "src/pyENDFtk/Tape.hpp"
   ],
   "ignore pattern": "$^",
   "implementation files": [
-    "src/ENDFtk.cpp"
+    "src/pyENDFtk.cpp"
   ],
   "include path": "src/",
   "initialized": true,
